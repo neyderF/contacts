@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
 import { SignUpDto } from './dto/signup.dto';
 import { jwtConstants } from './constants';
+import { QueryFailedError } from 'typeorm';
 
 @Injectable()
 export class AuthService {
@@ -41,12 +42,15 @@ export class AuthService {
             createdUser.password = undefined;
 
             return createdUser;
+
         } catch (error) {
-            console.log(error)
-            //   if (error?.code === PostgresErrorCode.UniqueViolation) {
-            //     throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
-            //   }
-            //   throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
+
+            if (error.code == 'ER_DUP_ENTRY') {
+                throw new HttpException('User with that username already exists', HttpStatus.BAD_REQUEST);
+            }
+
+            throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
+
         }
     }
 }
