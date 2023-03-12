@@ -1,6 +1,6 @@
-import {IsString, IsEmail, IsNumber,IsNotEmpty,IsOptional} from 'class-validator'
+import { IsString, IsEmail, IsNumber, IsNotEmpty, IsOptional, IsDate, IsDateString } from 'class-validator'
 
-export class CreateContactDto {
+export class ContactDto {
 
     @IsString()
     @IsNotEmpty()
@@ -30,7 +30,9 @@ export class CreateContactDto {
     @IsOptional()
     favoriteColor?: string
 
-    @IsNumber()
+    @IsDateString()
     @IsNotEmpty()
-    age: number
+    birthday: Date
+
+
 }

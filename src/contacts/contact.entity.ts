@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import User from "src/users/user.entity"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm"
 
 @Entity()
 export class Contact {
@@ -14,22 +15,26 @@ export class Contact {
     @Column()
     email: string
 
-    @Column()
-    age: number
+    @Column({ type: 'date' })
+    birthday: Date
 
     @Column()
     phone1: number
 
-    @Column({ nullable: true})
+    @Column({ nullable: true })
     phone2?: number
 
     @Column()
     address: string
 
-    @Column({ nullable: true})
+    @Column({ nullable: true })
     favoriteColor: string
 
     @Column({ type: 'datetime' })
+    @CreateDateColumn({ name: 'created_at' })
     createdAt: Date
+
+    @ManyToOne(() => User, (user) => user.contacts)
+    user: User
 
 }
