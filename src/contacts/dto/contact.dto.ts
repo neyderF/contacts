@@ -4,7 +4,7 @@ export class ContactDto {
 
     @IsString()
     @IsNotEmpty()
-    name: string
+    firstName: string
 
     @IsString()
     @IsNotEmpty()
@@ -20,7 +20,7 @@ export class ContactDto {
 
     @IsNumber()
     @IsOptional()
-    phone2?: number
+    phone2?: number | null
 
     @IsString()
     @IsNotEmpty()
@@ -28,7 +28,7 @@ export class ContactDto {
 
     @IsString()
     @IsOptional()
-    favoriteColor?: string
+    favoriteColor?: string | null
 
     @IsDateString()
     @IsNotEmpty()

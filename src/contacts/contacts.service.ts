@@ -73,7 +73,7 @@ export class ContactsService {
         } else {
 
             let {
-                name,
+                firstName,
                 lastName,
                 email,
                 phone1,
@@ -84,7 +84,7 @@ export class ContactsService {
             } = contactData
 
 
-            tmpContact.firstName = name
+            tmpContact.firstName = firstName
             tmpContact.lastName = lastName
             tmpContact.email = email
             tmpContact.phone1 = phone1

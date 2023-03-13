@@ -4,7 +4,7 @@ import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
 import { SignUpDto } from './dto/signup.dto';
 import { jwtConstants } from './constants';
-import { QueryFailedError } from 'typeorm';
+
 
 @Injectable()
 export class AuthService {

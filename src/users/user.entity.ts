@@ -1,4 +1,4 @@
-import { Contact } from 'src/contacts/contact.entity';
+import { Contact } from '../contacts/contact.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -12,7 +12,7 @@ class User {
     @Column()
     public password: string;
 
-    @OneToMany(() => Contact, (contact) => contact.user)
+    @OneToMany(() => Contact, (contact) => contact.user, { nullable: false })
     contacts: Contact[]
 }
 

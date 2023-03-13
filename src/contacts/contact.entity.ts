@@ -1,4 +1,4 @@
-import User from "src/users/user.entity"
+import User from "../users/user.entity"
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm"
 
 @Entity()
@@ -34,7 +34,7 @@ export class Contact {
     @CreateDateColumn({ name: 'created_at' })
     createdAt: Date
 
-    @ManyToOne(() => User, (user) => user.contacts)
+    @ManyToOne(() => User, (user) => user.contacts,{nullable: false})
     user: User
 
 }
