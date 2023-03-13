@@ -9,6 +9,11 @@
 $ npm install
 ```
 
+
+## Before run the app
+
+you must import the database that you will find in the db folder, or create a database contacts and configure the credentials in the app.module.ts
+
 ## Running the app
 
 ```bash
@@ -22,6 +27,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+for access to app you can use a username `nfs` and a password `nfs` if you imported existing the database or also you can create an account using the endpoint `/auth/signup` and sending an username and a password.
+
 ## Test
 
 ```bash
@@ -33,4 +40,3 @@ $ npm run test:e2e
 ## License
 
 Nest is [MIT licensed](LICENSE).
-
